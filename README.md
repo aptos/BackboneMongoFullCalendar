@@ -14,7 +14,7 @@ This sample has be modified to use Mongodb with mongoid:
   * Update Gemfile - note that newer versions of mongo gems didn't work for me
 
   * Update config/application.rb
-<code>
+```
       #require 'rails/all'
 
       # Use Mongodb
@@ -22,14 +22,14 @@ This sample has be modified to use Mongodb with mongoid:
       require "action_mailer/railtie"
       require "active_resource/railtie"
       require "sprockets/railtie"
-</code>
+```
 
   * create config/mongoid.yml - 'rails g mongoid:config'
 
   * Add 'include Mongoid::Document' to each model class
 
   * create initializers/mongoid.rb which modifies as_json to return an 'id' and '_id':
-<code>
+```
     module Mongoid
       module Document
         def as_json(options={})
@@ -39,6 +39,6 @@ This sample has be modified to use Mongodb with mongoid:
         end
       end
     end
-</code>
+```
 
   * After installing mongodb, gem install futon4mongo to check out the database
