@@ -5,10 +5,6 @@ backbone.js with mongodb and fullCalendar.js on rails 3.1
 
 Sample code for http://blog.shinetech.com/2011/08/05/building-a-shared-calendar-with-backbone-js-and-fullcalendar-a-step-by-step-tutorial
 
-Note that the data used in the demo is store as fixtures, not seed data. Thus you should use the following to load it:
-
-rake db:fixtures:load
-
 This sample has be modified to use Mongodb with mongoid:
 
   * Update Gemfile - note that newer versions of mongo gems didn't work for me
@@ -24,9 +20,10 @@ This sample has be modified to use Mongodb with mongoid:
       require "sprockets/railtie"
 ```
 
-  * create config/mongoid.yml - 'rails g mongoid:config'
+  * create config/mongoid.yml - 
+    ```rails g mongoid:config```
 
-  * Add 'include Mongoid::Document' to each model class
+  * Add ```include Mongoid::Document``` to each model class
 
   * create initializers/mongoid.rb which modifies as_json to return an 'id' and '_id':
 ```
@@ -41,4 +38,4 @@ This sample has be modified to use Mongodb with mongoid:
     end
 ```
 
-  * After installing mongodb, gem install futon4mongo to check out the database
+  * After installing mongodb, ```gem install futon4mongo``` to check out the database
