@@ -1,0 +1,596 @@
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (1.6ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("schema_migrations")
+  [1m[36mSQL (1.4ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+Migrating to CreateEvents (20110802071408)
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TABLE "events" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "color" varchar(255), "start" datetime, "end" datetime, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110802071408')
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("events")
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at /usr/local/lib/ruby/1.9.1/webrick/httpserver.rb:111)
+
+
+Started GET "/events" for 127.0.0.1 at 2012-07-13 07:39:05 -0700
+  Processing by EventsController#index as JSON
+  [1m[36mEvent Load (0.5ms)[0m  [1mSELECT "events".* FROM "events"[0m
+Completed 200 OK in 93ms (Views: 17.3ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/events" for 127.0.0.1 at 2012-07-13 07:39:21 -0700
+  Processing by EventsController#create as JSON
+  Parameters: {"start"=>2012-07-01 07:00:00 UTC, "end"=>2012-07-01 07:00:00 UTC, "title"=>"here we are", "color"=>"blue"}
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "events" ("title", "color", "start", "end", "created_at", "updated_at") VALUES ('here we are', 'blue', '2012-07-01 07:00:00.000000', '2012-07-01 07:00:00.000000', '2012-07-13 14:39:21.106237', '2012-07-13 14:39:21.106237')[0m
+Completed 200 OK in 73ms (Views: 4.5ms | ActiveRecord: 0.6ms)
+
+
+Started PUT "/events/980190963" for 127.0.0.1 at 2012-07-13 07:39:33 -0700
+  Processing by EventsController#update as JSON
+  Parameters: {"start"=>2012-07-01 07:00:00 UTC, "end"=>2012-07-01 07:00:00 UTC, "title"=>"here we are", "color"=>"yellow", "created_at"=>2012-07-13 14:39:21 UTC, "id"=>"980190963", "updated_at"=>2012-07-13 14:39:21 UTC}
+  [1m[35mEvent Load (0.2ms)[0m  SELECT "events".* FROM "events" WHERE "events"."id" = 980190963 LIMIT 1
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE "events" SET "color" = 'yellow', "updated_at" = '2012-07-13 14:39:33.406463' WHERE "events"."id" = 980190963[0m
+Completed 200 OK in 24ms (Views: 4.0ms | ActiveRecord: 0.5ms)
+
+
+Started PUT "/events/980190963" for 127.0.0.1 at 2012-07-13 07:39:40 -0700
+  Processing by EventsController#update as JSON
+  Parameters: {"start"=>2012-07-01 07:00:00 UTC, "end"=>2012-07-01 07:00:00 UTC, "title"=>"here we are", "color"=>"green", "created_at"=>2012-07-13 14:39:21 UTC, "id"=>"980190963", "updated_at"=>2012-07-13 14:39:33 UTC}
+  [1m[35mEvent Load (0.2ms)[0m  SELECT "events".* FROM "events" WHERE "events"."id" = 980190963 LIMIT 1
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE "events" SET "color" = 'green', "updated_at" = '2012-07-13 14:39:40.550852' WHERE "events"."id" = 980190963[0m
+Completed 200 OK in 25ms (Views: 4.3ms | ActiveRecord: 0.6ms)
+
+
+Started PUT "/events/980190963" for 127.0.0.1 at 2012-07-13 07:42:30 -0700
+  Processing by EventsController#update as JSON
+  Parameters: {"start"=>2012-07-02 07:00:00 UTC, "end"=>nil, "title"=>"here we are", "color"=>"green", "created_at"=>2012-07-13 14:39:21 UTC, "id"=>"980190963", "updated_at"=>2012-07-13 14:39:40 UTC}
+  [1m[35mEvent Load (0.2ms)[0m  SELECT "events".* FROM "events" WHERE "events"."id" = 980190963 LIMIT 1
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE "events" SET "start" = '2012-07-02 07:00:00.000000', "end" = NULL, "updated_at" = '2012-07-13 14:42:30.104579' WHERE "events"."id" = 980190963[0m
+Completed 200 OK in 61ms (Views: 4.0ms | ActiveRecord: 0.5ms)
+
+
+Started PUT "/events/980190963" for 127.0.0.1 at 2012-07-13 07:42:34 -0700
+  Processing by EventsController#update as JSON
+  Parameters: {"start"=>2012-07-03 07:00:00 UTC, "end"=>nil, "title"=>"here we are", "color"=>"green", "created_at"=>2012-07-13 14:39:21 UTC, "id"=>"980190963", "updated_at"=>2012-07-13 14:42:30 UTC}
+  [1m[35mEvent Load (0.3ms)[0m  SELECT "events".* FROM "events" WHERE "events"."id" = 980190963 LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE "events" SET "start" = '2012-07-03 07:00:00.000000', "updated_at" = '2012-07-13 14:42:34.938590' WHERE "events"."id" = 980190963[0m
+Completed 200 OK in 24ms (Views: 4.0ms | ActiveRecord: 0.7ms)
+
+
+Started PUT "/events/980190963" for 127.0.0.1 at 2012-07-13 07:42:37 -0700
+  Processing by EventsController#update as JSON
+  Parameters: {"start"=>2012-07-04 07:00:00 UTC, "end"=>nil, "title"=>"here we are", "color"=>"green", "created_at"=>2012-07-13 14:39:21 UTC, "id"=>"980190963", "updated_at"=>2012-07-13 14:42:34 UTC}
+  [1m[35mEvent Load (0.5ms)[0m  SELECT "events".* FROM "events" WHERE "events"."id" = 980190963 LIMIT 1
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE "events" SET "start" = '2012-07-04 07:00:00.000000', "updated_at" = '2012-07-13 14:42:37.738797' WHERE "events"."id" = 980190963[0m
+Completed 200 OK in 62ms (Views: 4.0ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/events" for 127.0.0.1 at 2012-07-13 07:42:46 -0700
+  Processing by EventsController#create as JSON
+  Parameters: {"start"=>2012-07-03 07:00:00 UTC, "end"=>2012-07-03 07:00:00 UTC, "title"=>"there you were", "color"=>"blue"}
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO "events" ("title", "color", "start", "end", "created_at", "updated_at") VALUES ('there you were', 'blue', '2012-07-03 07:00:00.000000', '2012-07-03 07:00:00.000000', '2012-07-13 14:42:46.910545', '2012-07-13 14:42:46.910545')
+Completed 200 OK in 26ms (Views: 4.5ms | ActiveRecord: 0.3ms)
+
+
+Started PUT "/events/980190963" for 127.0.0.1 at 2012-07-13 08:34:54 -0700
+
+ActionController::RoutingError (undefined method `debug_rjs=' for ActionView::Base:Class):
+  app/controllers/application_controller.rb:1:in `<top (required)>'
+  app/controllers/events_controller.rb:3:in `<top (required)>'
+
+
+
+Started PUT "/events/980190963" for 127.0.0.1 at 2012-07-13 08:35:09 -0700
+  [1m[36mEvent Load (0.2ms)[0m  [1mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT 1[0m  [["id", "980190963"]]
+  [1m[35m (0.5ms)[0m  UPDATE "events" SET "start" = '2012-07-05 07:00:00.000000', "color" = 'red', "updated_at" = '2012-07-13 15:35:09.596546' WHERE "events"."id" = 980190963
+
+
+Started POST "/events" for 127.0.0.1 at 2012-07-13 08:35:21 -0700
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "events" ("color", "created_at", "end", "start", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["color", "purple"], ["created_at", Fri, 13 Jul 2012 15:35:21 UTC +00:00], ["end", Wed, 04 Jul 2012 07:00:00 UTC +00:00], ["start", Wed, 04 Jul 2012 07:00:00 UTC +00:00], ["title", "purple"], ["updated_at", Fri, 13 Jul 2012 15:35:21 UTC +00:00]]
+
+
+Started PUT "/events/980190965" for 127.0.0.1 at 2012-07-13 08:35:25 -0700
+  [1m[35mEvent Load (0.1ms)[0m  SELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT 1  [["id", "980190965"]]
+  [1m[36m (0.3ms)[0m  [1mUPDATE "events" SET "start" = '2012-07-03 07:00:00.000000', "end" = NULL, "updated_at" = '2012-07-13 15:35:25.270961' WHERE "events"."id" = 980190965[0m
+
+
+Started PUT "/events/980190964" for 127.0.0.1 at 2012-07-13 08:35:26 -0700
+  [1m[35mEvent Load (0.1ms)[0m  SELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT 1  [["id", "980190964"]]
+  [1m[36m (0.4ms)[0m  [1mUPDATE "events" SET "start" = '2012-07-04 07:00:00.000000', "end" = NULL, "updated_at" = '2012-07-13 15:35:26.679956' WHERE "events"."id" = 980190964[0m
+
+
+Started GET "/events" for 127.0.0.1 at 2012-07-13 08:59:38 -0700
+  Processing by EventsController#index as JSON
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.0741ms)
+Completed 500 Internal Server Error in 65ms
+
+NoMethodError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.[]):
+  app/controllers/events_controller.rb:5:in `index'
+
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.7ms)
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (16.0ms)
+
+
+Started POST "/events" for 127.0.0.1 at 2012-07-13 09:00:01 -0700
+  Processing by EventsController#create as JSON
+  Parameters: {"start"=>"2012-07-13T07:00:00.000Z", "end"=>"2012-07-13T07:00:00.000Z", "title"=>"b lue", "color"=>"blue"}
+WARNING: Can't verify CSRF token authenticity
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.0779ms)
+Completed 500 Internal Server Error in 15ms
+
+NoMethodError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.[]):
+  app/controllers/events_controller.rb:10:in `create'
+
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (4.5ms)
+
+
+Started POST "/events" for 127.0.0.1 at 2012-07-13 09:02:53 -0700
+  Processing by EventsController#create as JSON
+  Parameters: {"start"=>"2012-07-13T07:00:00.000Z", "end"=>"2012-07-13T07:00:00.000Z", "title"=>"b lue", "color"=>"blue"}
+WARNING: Can't verify CSRF token authenticity
+My Params: {"start"=>"2012-07-13T07:00:00.000Z", "end"=>"2012-07-13T07:00:00.000Z", "title"=>"b lue", "color"=>"blue", "action"=>"create", "controller"=>"events"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.9129ms)
+Completed 500 Internal Server Error in 15ms
+
+NoMethodError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.[]):
+  app/controllers/events_controller.rb:11:in `create'
+
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (4.8ms)
+
+
+Started POST "/events" for 127.0.0.1 at 2012-07-13 09:09:39 -0700
+  Processing by EventsController#create as JSON
+  Parameters: {"start"=>"2012-07-13T07:00:00.000Z", "end"=>"2012-07-13T07:00:00.000Z", "title"=>"blue", "color"=>"blue"}
+WARNING: Can't verify CSRF token authenticity
+My Params: {"start"=>"2012-07-13T07:00:00.000Z", "end"=>"2012-07-13T07:00:00.000Z", "title"=>"blue", "color"=>"blue", "action"=>"create", "controller"=>"events"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.0409ms)
+Completed 500 Internal Server Error in 27ms
+
+NoMethodError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.[]):
+  app/controllers/events_controller.rb:13:in `create'
+
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.8ms)
+
+
+Started POST "/events" for 127.0.0.1 at 2012-07-13 09:11:32 -0700
+  Processing by EventsController#create as JSON
+  Parameters: {"start"=>"2012-07-13T07:00:00.000Z", "end"=>"2012-07-13T07:00:00.000Z", "title"=>"b l u e", "color"=>"blue"}
+WARNING: Can't verify CSRF token authenticity
+My Params: 
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.2269ms)
+Completed 500 Internal Server Error in 15ms
+
+NoMethodError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.[]):
+  app/controllers/events_controller.rb:13:in `create'
+
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.7ms)
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (39.7ms)
+
+
+Started POST "/events" for 127.0.0.1 at 2012-07-13 09:12:09 -0700
+  Processing by EventsController#create as JSON
+  Parameters: {"start"=>"2012-07-13T07:00:00.000Z", "end"=>"2012-07-13T07:00:00.000Z", "title"=>"b l u e", "color"=>"blue"}
+WARNING: Can't verify CSRF token authenticity
+My Params: {"start"=>"2012-07-13T07:00:00.000Z", "end"=>"2012-07-13T07:00:00.000Z", "title"=>"b l u e", "color"=>"blue", "action"=>"create", "controller"=>"events"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.0688ms)
+Completed 500 Internal Server Error in 22ms
+
+NoMethodError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.[]):
+  app/controllers/events_controller.rb:13:in `create'
+
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (4.7ms)
+
+
+Started POST "/events" for 127.0.0.1 at 2012-07-13 09:16:11 -0700
+  Processing by EventsController#create as JSON
+  Parameters: {"start"=>"2012-07-13T07:00:00.000Z", "end"=>"2012-07-13T07:00:00.000Z", "title"=>"b l u e", "color"=>"blue"}
+WARNING: Can't verify CSRF token authenticity
+My Params: {"start"=>"2012-07-13T07:00:00.000Z", "end"=>"2012-07-13T07:00:00.000Z", "title"=>"b l u e", "color"=>"blue", "action"=>"create", "controller"=>"events"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.9599ms)
+Completed 500 Internal Server Error in 17ms
+
+NoMethodError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.[]):
+  app/controllers/events_controller.rb:14:in `create'
+
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (5.0ms)
+
+
+Started POST "/events" for 127.0.0.1 at 2012-07-13 09:17:23 -0700
+  Processing by EventsController#create as JSON
+  Parameters: {"start"=>"2012-07-13T07:00:00.000Z", "end"=>"2012-07-13T07:00:00.000Z", "title"=>"b l u e", "color"=>"blue"}
+WARNING: Can't verify CSRF token authenticity
+My Params: {"start"=>"2012-07-13T07:00:00.000Z", "end"=>"2012-07-13T07:00:00.000Z", "title"=>"b l u e", "color"=>"blue", "action"=>"create", "controller"=>"events"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.9878ms)
+Completed 500 Internal Server Error in 52ms
+
+NoMethodError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.[]):
+  app/controllers/events_controller.rb:14:in `create'
+
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (4.5ms)
+
+
+Started POST "/events" for 127.0.0.1 at 2012-07-13 09:17:30 -0700
+  Processing by EventsController#create as JSON
+  Parameters: {"start"=>"2012-07-13T07:00:00.000Z", "end"=>"2012-07-13T07:00:00.000Z", "title"=>"b l u e", "color"=>"blue"}
+WARNING: Can't verify CSRF token authenticity
+My Params: {"start"=>"2012-07-13T07:00:00.000Z", "end"=>"2012-07-13T07:00:00.000Z", "title"=>"b l u e", "color"=>"blue", "action"=>"create", "controller"=>"events"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.0519ms)
+Completed 500 Internal Server Error in 16ms
+
+NoMethodError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.[]):
+  app/controllers/events_controller.rb:14:in `create'
+
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (4.5ms)
+
+
+Started GET "/events" for 127.0.0.1 at 2012-07-13 09:18:52 -0700
+  Processing by EventsController#index as JSON
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.0540ms)
+Completed 500 Internal Server Error in 29ms
+
+NoMethodError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.[]):
+  app/controllers/events_controller.rb:5:in `index'
+
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.7ms)
+
+
+Started GET "/events" for 127.0.0.1 at 2012-07-13 09:23:42 -0700
+  Processing by EventsController#index as JSON
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.9542ms)
+Completed 500 Internal Server Error in 62ms
+
+NoMethodError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.[]):
+  app/controllers/events_controller.rb:5:in `index'
+
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.7ms)
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.2ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.3170ms)
+
+
+Started GET "/events" for 127.0.0.1 at 2012-07-13 09:57:51 -0700
+  Processing by EventsController#index as JSON
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.0319ms)
+Completed 500 Internal Server Error in 30ms
+
+NoMethodError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.[]):
+  app/controllers/events_controller.rb:5:in `index'
+
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.6ms)
+
+
+Started GET "/events" for 127.0.0.1 at 2012-07-13 10:00:09 -0700
+  Processing by EventsController#index as JSON
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.0130ms)
+Completed 500 Internal Server Error in 31ms
+
+NoMethodError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.[]):
+  app/controllers/events_controller.rb:5:in `index'
+
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.9ms)
+
+
+Started GET "/events" for 127.0.0.1 at 2012-07-13 10:00:21 -0700
+  Processing by EventsController#index as HTML
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.0018ms)
+Completed 500 Internal Server Error in 15ms
+
+NoMethodError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.[]):
+  app/controllers/events_controller.rb:5:in `index'
+
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (5.0ms)
+
+
+Started GET "/events" for 127.0.0.1 at 2012-07-13 10:13:19 -0700
+  Processing by EventsController#index as HTML
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.1117ms)
+Completed 500 Internal Server Error in 62ms
+
+NoMethodError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.[]):
+  app/controllers/events_controller.rb:5:in `index'
+
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.9ms)
+
+
+Started GET "/yodas" for 127.0.0.1 at 2012-07-13 10:13:27 -0700
+
+AbstractController::ActionNotFound (The action 'index' could not be found for YodasController):
+  
+
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.6ms)
+
+
+Started GET "/yodas/create?name='dude'" for 127.0.0.1 at 2012-07-13 10:13:57 -0700
+
+AbstractController::ActionNotFound (The action 'show' could not be found for YodasController):
+  
+
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.4ms)
+
+
+Started GET "/yodas" for 127.0.0.1 at 2012-07-13 10:15:41 -0700
+  Processing by YodasController#index as HTML
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (2.6140ms)
+Rendered yodas/index.html.erb within layouts/application (33.3ms)
+Completed 500 Internal Server Error in 126ms
+
+ActionView::Template::Error (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.[]):
+    8:     <th></th>
+    9:   </tr>
+    10: 
+    11: <% @yodas.each do |yoda| %>
+    12:   <tr>
+    13:     <td><%= yoda.name %></td>
+    14:     <td><%= link_to 'Show', yoda %></td>
+  app/views/yodas/index.html.erb:11:in `_app_views_yodas_index_html_erb__3735859401710061643_2170388760'
+  app/controllers/yodas_controller.rb:7:in `index'
+
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+Rendered /Users/brianwilkerson/.bundler/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.3ms)
+MONGODB [DEBUG] Logging level is currently :debug which could negatively impact client-side performance. You should set your logging level no lower than :info in production.
+MONGODB (0ms) admin['$cmd'].find({:ismaster=>1}).limit(-1)
+MONGODB [DEBUG] Logging level is currently :debug which could negatively impact client-side performance. You should set your logging level no lower than :info in production.
+MONGODB (0ms) admin['$cmd'].find({:ismaster=>1}).limit(-1)
+MONGODB [DEBUG] Logging level is currently :debug which could negatively impact client-side performance. You should set your logging level no lower than :info in production.
+MONGODB (0ms) admin['$cmd'].find({:ismaster=>1}).limit(-1)
+
+
+Started GET "/events" for 127.0.0.1 at 2012-07-13 10:31:16 -0700
+  Processing by EventsController#index as JSON
+MONGODB (0ms) development['system.namespaces'].find({})
+MONGODB (0ms) development['$cmd'].find({:create=>"events"}).limit(-1)
+MONGODB (0ms) development['events'].find({})
+Completed 200 OK in 32ms (Views: 6.0ms)
+
+
+Started GET "/events" for 127.0.0.1 at 2012-07-13 10:31:17 -0700
+  Processing by EventsController#index as JSON
+MONGODB (0ms) development['system.namespaces'].find({})
+MONGODB (0ms) development['events'].find({})
+Completed 200 OK in 61ms (Views: 4.0ms)
+
+
+Started POST "/events" for 127.0.0.1 at 2012-07-13 10:31:33 -0700
+  Processing by EventsController#create as JSON
+  Parameters: {"start"=>"2012-07-13T07:00:00.000Z", "end"=>"2012-07-13T07:00:00.000Z", "title"=>"b l u e", "color"=>"blue"}
+WARNING: Can't verify CSRF token authenticity
+My Params: {"start"=>"2012-07-13T07:00:00.000Z", "end"=>"2012-07-13T07:00:00.000Z", "title"=>"b l u e", "color"=>"blue", "action"=>"create", "controller"=>"events"}
+MONGODB (0ms) development['system.namespaces'].find({})
+MONGODB (0ms) development['events'].insert([{"_id"=>BSON::ObjectId('50005b75d34a9c27b1000001'), "start"=>"2012-07-13T07:00:00.000Z", "end"=>"2012-07-13T07:00:00.000Z", "title"=>"b l u e", "color"=>"blue"}])
+Completed 200 OK in 18ms (Views: 2.8ms)
+MONGODB [DEBUG] Logging level is currently :debug which could negatively impact client-side performance. You should set your logging level no lower than :info in production.
+MONGODB (0ms) admin['$cmd'].find({:ismaster=>1}).limit(-1)
+
+
+Started GET "/events" for 127.0.0.1 at 2012-07-13 10:36:09 -0700
+  Processing by EventsController#index as JSON
+MONGODB (0ms) development['system.namespaces'].find({})
+MONGODB (0ms) development['events'].find({})
+Completed 200 OK in 66ms (Views: 5.0ms)
+
+
+Started POST "/events" for 127.0.0.1 at 2012-07-13 10:36:20 -0700
+  Processing by EventsController#create as JSON
+  Parameters: {"start"=>"2012-07-13T07:00:00.000Z", "end"=>"2012-07-13T07:00:00.000Z", "title"=>"r e d", "color"=>"red"}
+WARNING: Can't verify CSRF token authenticity
+My Params: {"start"=>"2012-07-13T07:00:00.000Z", "end"=>"2012-07-13T07:00:00.000Z", "title"=>"r e d", "color"=>"red", "action"=>"create", "controller"=>"events"}
+MONGODB (0ms) development['system.namespaces'].find({})
+MONGODB (0ms) development['events'].insert([{"_id"=>BSON::ObjectId('50005c94d34a9c288c000001'), "start"=>"2012-07-13T07:00:00.000Z", "end"=>"2012-07-13T07:00:00.000Z", "title"=>"r e d", "color"=>"red"}])
+Completed 200 OK in 18ms (Views: 2.8ms)
+
+
+Started PUT "/events/50005c94d34a9c288c000001" for 127.0.0.1 at 2012-07-13 10:36:49 -0700
+  Processing by EventsController#update as JSON
+  Parameters: {"start"=>"2012-07-13T07:00:00.000Z", "end"=>"2012-07-13T07:00:00.000Z", "title"=>"r e a d y", "color"=>"red", "_id"=>"50005c94d34a9c288c000001", "id"=>"50005c94d34a9c288c000001"}
+WARNING: Can't verify CSRF token authenticity
+MONGODB (0ms) development['system.namespaces'].find({})
+MONGODB (0ms) development['events'].find({:_id=>BSON::ObjectId('50005c94d34a9c288c000001')}).limit(-1).sort([[:_id, :asc]])
+MONGODB (0ms) development['events'].update({"_id"=>BSON::ObjectId('50005c94d34a9c288c000001')}, {"$set"=>{"title"=>"r e a d y"}})
+Completed 200 OK in 20ms (Views: 2.8ms)
+
+
+Started POST "/events" for 127.0.0.1 at 2012-07-13 10:37:12 -0700
+  Processing by EventsController#create as JSON
+  Parameters: {"start"=>"2012-07-14T07:00:00.000Z", "end"=>"2012-07-14T07:00:00.000Z", "title"=>"b l u e", "color"=>"blue"}
+WARNING: Can't verify CSRF token authenticity
+My Params: {"start"=>"2012-07-14T07:00:00.000Z", "end"=>"2012-07-14T07:00:00.000Z", "title"=>"b l u e", "color"=>"blue", "action"=>"create", "controller"=>"events"}
+MONGODB (0ms) development['system.namespaces'].find({})
+MONGODB (0ms) development['events'].insert([{"_id"=>BSON::ObjectId('50005cc8d34a9c288c000002'), "start"=>"2012-07-14T07:00:00.000Z", "end"=>"2012-07-14T07:00:00.000Z", "title"=>"b l u e", "color"=>"blue"}])
+Completed 200 OK in 53ms (Views: 2.8ms)
+
+
+Started PUT "/events/50005cc8d34a9c288c000002" for 127.0.0.1 at 2012-07-13 10:37:15 -0700
+  Processing by EventsController#update as JSON
+  Parameters: {"start"=>"2012-07-13T07:00:00.000Z", "end"=>nil, "title"=>"b l u e", "color"=>"blue", "_id"=>"50005cc8d34a9c288c000002", "id"=>"50005cc8d34a9c288c000002"}
+WARNING: Can't verify CSRF token authenticity
+MONGODB (0ms) development['system.namespaces'].find({})
+MONGODB (0ms) development['events'].find({:_id=>BSON::ObjectId('50005cc8d34a9c288c000002')}).limit(-1).sort([[:_id, :asc]])
+MONGODB (0ms) development['events'].update({"_id"=>BSON::ObjectId('50005cc8d34a9c288c000002')}, {"$set"=>{"start"=>"2012-07-13T07:00:00.000Z", "end"=>nil}})
+Completed 200 OK in 19ms (Views: 2.9ms)
+
+
+Started PUT "/events/50005c94d34a9c288c000001" for 127.0.0.1 at 2012-07-13 10:37:20 -0700
+  Processing by EventsController#update as JSON
+  Parameters: {"start"=>"2012-07-14T07:00:00.000Z", "end"=>nil, "title"=>"r e a d y", "color"=>"red", "_id"=>"50005c94d34a9c288c000001", "id"=>"50005c94d34a9c288c000001"}
+WARNING: Can't verify CSRF token authenticity
+MONGODB (0ms) development['system.namespaces'].find({})
+MONGODB (0ms) development['events'].find({:_id=>BSON::ObjectId('50005c94d34a9c288c000001')}).limit(-1).sort([[:_id, :asc]])
+MONGODB (0ms) development['events'].update({"_id"=>BSON::ObjectId('50005c94d34a9c288c000001')}, {"$set"=>{"start"=>"2012-07-14T07:00:00.000Z", "end"=>nil}})
+Completed 200 OK in 22ms (Views: 2.9ms)
+
+
+Started PUT "/events/50005c94d34a9c288c000001" for 127.0.0.1 at 2012-07-13 10:37:32 -0700
+  Processing by EventsController#update as JSON
+  Parameters: {"start"=>"2012-07-07T07:00:00.000Z", "end"=>nil, "title"=>"r e a d y", "color"=>"red", "_id"=>"50005c94d34a9c288c000001", "id"=>"50005c94d34a9c288c000001"}
+WARNING: Can't verify CSRF token authenticity
+MONGODB (0ms) development['system.namespaces'].find({})
+MONGODB (0ms) development['events'].find({:_id=>BSON::ObjectId('50005c94d34a9c288c000001')}).limit(-1).sort([[:_id, :asc]])
+MONGODB (0ms) development['events'].update({"_id"=>BSON::ObjectId('50005c94d34a9c288c000001')}, {"$set"=>{"start"=>"2012-07-07T07:00:00.000Z"}})
+Completed 200 OK in 56ms (Views: 2.8ms)
+
+
+Started PUT "/events/50005cc8d34a9c288c000002" for 127.0.0.1 at 2012-07-13 10:37:37 -0700
+  Processing by EventsController#update as JSON
+  Parameters: {"start"=>"2012-07-06T07:00:00.000Z", "end"=>nil, "title"=>"b l u e", "color"=>"blue", "_id"=>"50005cc8d34a9c288c000002", "id"=>"50005cc8d34a9c288c000002"}
+WARNING: Can't verify CSRF token authenticity
+MONGODB (0ms) development['system.namespaces'].find({})
+MONGODB (0ms) development['events'].find({:_id=>BSON::ObjectId('50005cc8d34a9c288c000002')}).limit(-1).sort([[:_id, :asc]])
+MONGODB (0ms) development['events'].update({"_id"=>BSON::ObjectId('50005cc8d34a9c288c000002')}, {"$set"=>{"start"=>"2012-07-06T07:00:00.000Z"}})
+Completed 200 OK in 19ms (Views: 2.7ms)
+MONGODB [DEBUG] Logging level is currently :debug which could negatively impact client-side performance. You should set your logging level no lower than :info in production.
+MONGODB (0ms) admin['$cmd'].find({:ismaster=>1}).limit(-1)
+
+
+Started GET "/events" for 127.0.0.1 at 2012-07-13 10:54:25 -0700
+  Processing by EventsController#index as JSON
+MONGODB (0ms) development['system.namespaces'].find({})
+MONGODB (0ms) development['events'].find({})
+Completed 200 OK in 71ms (Views: 6.0ms)
+
+
+Started POST "/events" for 127.0.0.1 at 2012-07-13 10:54:37 -0700
+  Processing by EventsController#create as JSON
+  Parameters: {"start"=>"2012-07-06T07:00:00.000Z", "end"=>"2012-07-06T07:00:00.000Z", "title"=>"g r e e n", "color"=>"green"}
+WARNING: Can't verify CSRF token authenticity
+MONGODB (0ms) development['system.namespaces'].find({})
+MONGODB (0ms) development['events'].insert([{"_id"=>BSON::ObjectId('500060ddd34a9c28dd000001'), "start"=>"2012-07-06T07:00:00.000Z", "end"=>"2012-07-06T07:00:00.000Z", "title"=>"g r e e n", "color"=>"green"}])
+Completed 200 OK in 18ms (Views: 2.8ms)
+MONGODB [DEBUG] Logging level is currently :debug which could negatively impact client-side performance. You should set your logging level no lower than :info in production.
+MONGODB (0ms) admin['$cmd'].find({:ismaster=>1}).limit(-1)
+MONGODB [DEBUG] Logging level is currently :debug which could negatively impact client-side performance. You should set your logging level no lower than :info in production.
+MONGODB (0ms) admin['$cmd'].find({:ismaster=>1}).limit(-1)
+
+
+Started GET "/events" for 127.0.0.1 at 2012-07-13 11:53:02 -0700
+  Processing by EventsController#index as JSON
+MONGODB (1ms) development['system.namespaces'].find({})
+MONGODB (0ms) development['events'].find({})
+Completed 200 OK in 74ms (Views: 7.6ms)
+
+
+Started POST "/events" for 127.0.0.1 at 2012-07-13 11:53:11 -0700
+  Processing by EventsController#create as JSON
+  Parameters: {"start"=>"2012-07-07T07:00:00.000Z", "end"=>"2012-07-07T07:00:00.000Z", "title"=>"purple", "color"=>"purple"}
+WARNING: Can't verify CSRF token authenticity
+MONGODB (0ms) development['system.namespaces'].find({})
+MONGODB (0ms) development['events'].insert([{"_id"=>BSON::ObjectId('50006e97d34a9c29ba000001'), "start"=>"2012-07-07T07:00:00.000Z", "end"=>"2012-07-07T07:00:00.000Z", "title"=>"purple", "color"=>"purple"}])
+Completed 200 OK in 18ms (Views: 2.9ms)
+
+
+Started PUT "/events/50006e97d34a9c29ba000001" for 127.0.0.1 at 2012-07-13 11:53:17 -0700
+  Processing by EventsController#update as JSON
+  Parameters: {"start"=>"2012-07-07T07:00:00.000Z", "end"=>"2012-07-07T07:00:00.000Z", "title"=>"purple2", "color"=>"purple", "_id"=>"50006e97d34a9c29ba000001", "id"=>"50006e97d34a9c29ba000001"}
+WARNING: Can't verify CSRF token authenticity
+MONGODB (0ms) development['system.namespaces'].find({})
+MONGODB (0ms) development['events'].find({:_id=>BSON::ObjectId('50006e97d34a9c29ba000001')}).limit(-1).sort([[:_id, :asc]])
+MONGODB (0ms) development['events'].update({"_id"=>BSON::ObjectId('50006e97d34a9c29ba000001')}, {"$set"=>{"title"=>"purple2"}})
+Completed 200 OK in 19ms (Views: 3.1ms)
+
+
+Started PUT "/events/50006e97d34a9c29ba000001" for 127.0.0.1 at 2012-07-13 11:53:19 -0700
+  Processing by EventsController#update as JSON
+  Parameters: {"start"=>"2012-07-06T07:00:00.000Z", "end"=>nil, "title"=>"purple2", "color"=>"purple", "_id"=>"50006e97d34a9c29ba000001", "id"=>"50006e97d34a9c29ba000001"}
+WARNING: Can't verify CSRF token authenticity
+MONGODB (0ms) development['system.namespaces'].find({})
+MONGODB (0ms) development['events'].find({:_id=>BSON::ObjectId('50006e97d34a9c29ba000001')}).limit(-1).sort([[:_id, :asc]])
+MONGODB (0ms) development['events'].update({"_id"=>BSON::ObjectId('50006e97d34a9c29ba000001')}, {"$set"=>{"start"=>"2012-07-06T07:00:00.000Z", "end"=>nil}})
+Completed 200 OK in 55ms (Views: 2.9ms)
+
+
+Started PUT "/events/50006e97d34a9c29ba000001" for 127.0.0.1 at 2012-07-13 11:53:26 -0700
+  Processing by EventsController#update as JSON
+  Parameters: {"start"=>"2012-07-06T07:00:00.000Z", "end"=>"2012-07-07T07:00:00.000Z", "title"=>"purple2", "color"=>"purple", "_id"=>"50006e97d34a9c29ba000001", "id"=>"50006e97d34a9c29ba000001"}
+WARNING: Can't verify CSRF token authenticity
+MONGODB (0ms) development['system.namespaces'].find({})
+MONGODB (0ms) development['events'].find({:_id=>BSON::ObjectId('50006e97d34a9c29ba000001')}).limit(-1).sort([[:_id, :asc]])
+MONGODB (0ms) development['events'].update({"_id"=>BSON::ObjectId('50006e97d34a9c29ba000001')}, {"$set"=>{"end"=>"2012-07-07T07:00:00.000Z"}})
+Completed 200 OK in 19ms (Views: 2.8ms)
+MONGODB [DEBUG] Logging level is currently :debug which could negatively impact client-side performance. You should set your logging level no lower than :info in production.
+MONGODB (0ms) admin['$cmd'].find({:ismaster=>1}).limit(-1)
+
+
+Started GET "/events" for 127.0.0.1 at 2012-07-13 12:16:02 -0700
+  Processing by EventsController#index as JSON
+MONGODB (0ms) development['system.namespaces'].find({})
+MONGODB (0ms) development['events'].find({})
+Completed 200 OK in 38ms (Views: 9.5ms)
