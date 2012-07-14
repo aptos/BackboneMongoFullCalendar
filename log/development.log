@@ -679,3 +679,21 @@ MONGODB (0ms) development['system.namespaces'].find({})
 MONGODB (0ms) development['events'].find({:_id=>BSON::ObjectId('5001bb80d34a9c38c5000001')}).limit(-1).sort([[:_id, :asc]])
 MONGODB (0ms) development['events'].remove({:_id=>BSON::ObjectId('5001bb80d34a9c38c5000001')})
 Completed 200 OK in 18ms (Views: 2.8ms)
+MONGODB [DEBUG] Logging level is currently :debug which could negatively impact client-side performance. You should set your logging level no lower than :info in production.
+MONGODB (0ms) admin['$cmd'].find({:ismaster=>1}).limit(-1)
+
+
+Started GET "/events" for 127.0.0.1 at 2012-07-14 11:35:48 -0700
+  Processing by EventsController#index as JSON
+MONGODB (1ms) development['system.namespaces'].find({})
+MONGODB (0ms) development['events'].find({})
+Completed 200 OK in 94ms (Views: 9.0ms)
+
+
+Started POST "/events" for 127.0.0.1 at 2012-07-14 11:35:56 -0700
+  Processing by EventsController#create as JSON
+  Parameters: {"start"=>"2012-07-14T07:00:00.000Z", "end"=>"2012-07-14T07:00:00.000Z", "title"=>"grey", "color"=>"grey"}
+WARNING: Can't verify CSRF token authenticity
+MONGODB (0ms) development['system.namespaces'].find({})
+MONGODB (0ms) development['events'].insert([{"_id"=>BSON::ObjectId('5001bc0cd34a9c38f0000001'), "start"=>"2012-07-14T07:00:00.000Z", "end"=>"2012-07-14T07:00:00.000Z", "title"=>"grey", "color"=>"grey"}])
+Completed 200 OK in 18ms (Views: 2.7ms)
